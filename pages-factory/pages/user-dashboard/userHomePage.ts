@@ -9,15 +9,15 @@ export default class UserAuthPage {
      * @description clicks three dots button
      */
     async clickThreeDotsButton() {
-        await this.page.locator(UserHomePageLocators.threeDotsButton).click();
+        await this.page.locator(UserHomePageLocators.three_dots_button).click();
     }
 
     /**
      * @description clicks logout button
      */
     async clickLogoutButton() {
-        await this.page.locator(UserHomePageLocators.logoutButton).click();
-        await expect(this.page.locator(UserAuthLocators.loginButton)).toBeVisible();
+        await this.page.locator(UserHomePageLocators.logout_button).click();
+        await expect(this.page.locator(UserAuthLocators.login_button)).toBeVisible();
     }
 
 }

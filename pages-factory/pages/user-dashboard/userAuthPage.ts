@@ -15,49 +15,49 @@ export default class UserAuthPage {
      * @description Clicks Login button and selects Login as Student
      */
     async clickButtonLoginStudent() {
-        await this.page.locator(UserAuthLocators.loginButton).click();
-        await this.page.locator(UserAuthLocators.loginStudentButton).click();
+        await this.page.locator(UserAuthLocators.login_button).click();
+        await this.page.locator(UserAuthLocators.login_student_button).click();
     }
 
     /**
      * @description Fills in the Email field
      */
     async fillInputEmail(email: string) {
-        await this.page.locator(UserAuthLocators.emailField).fill(email);
+        await this.page.locator(UserAuthLocators.email_field).fill(email);
     }
 
     /**
      * @description Fills in the Password field
      */
     async fillInputPassword(password: string) {
-        await this.page.locator(UserAuthLocators.passwordField).fill(password);
+        await this.page.locator(UserAuthLocators.password_field).fill(password);
     }
 
     /**
      * @description Clicks Sign In button
      */
     async clickButtonSignIn() {
-        await this.page.locator(UserAuthLocators.signInButton).click();
+        await this.page.locator(UserAuthLocators.signin_button).click();
     }
 
     /**
      * @description Checks if success login toast is visible
      */
     async visibleToastSuccessLogin() {
-        await expect(this.page.locator(UserAuthLocators.successLoginToast)).toBeVisible();
+        await expect(this.page.locator(UserAuthLocators.success_login_toast)).toBeVisible();
     }
 
     /**
      * @description Checks if invalid password toast is visible
      */
     async visibleToastInvalidPassword() {
-        await expect(this.page.locator(UserAuthLocators.invalidPasswordToast)).toBeVisible();
+        await expect(this.page.locator(UserAuthLocators.invalid_password_toast)).toBeVisible();
     }
     /**
      * @description Checks if sign in button is disabled
      */
     async visibleDisabledSignInButton() {
-        const disabledButton = this.page.locator(`${UserAuthLocators.signInButton}[@disabled]`);
+        const disabledButton = this.page.locator(`${UserAuthLocators.signin_button}[@disabled]`);
         await expect(disabledButton).toBeDisabled();
       }
      /**
