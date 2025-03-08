@@ -15,11 +15,10 @@ export default defineConfig({
   maxFailures: 1, // Stop execution after the first failed test
 
   use: {
-    trace: "on-first-retry", // Collect trace only when retrying failed tests
-    screenshot: "on", // Capture screenshots on test failure
+    trace: 'on-first-retry', // Collect trace only when retrying failed tests
+    screenshot: 'on', // Capture screenshots on test failure
     headless: false, // Run tests in headed mode to see browser actions
-    userAgent:
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36", // Set a valid User-Agent
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', // Set a valid User-Agent
   },
 
   /* Configure projects for major browsers */
