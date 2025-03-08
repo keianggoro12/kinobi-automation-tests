@@ -19,5 +19,13 @@ export default class UserAuthPage {
         await this.page.locator(UserHomePageLocators.logout_button).click();
         await expect(this.page.locator(UserAuthLocators.login_button)).toBeVisible();
     }
+    /**
+     * @description clicks resume builder button
+     */
+
+    async clickResumeBuilder(){
+        await this.page.locator(UserHomePageLocators.resume_builder_button).click();
+    }
+
 
 }
