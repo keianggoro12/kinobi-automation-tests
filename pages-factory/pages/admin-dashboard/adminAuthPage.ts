@@ -1,6 +1,6 @@
-import { Page, expect } from "@playwright/test";
-import { AdminAuthLocators } from "../../locators/admin-dashboard/adminAuthLocators";
-import { AdminHomePageLocators } from "../../locators/admin-dashboard/adminHomePageLocators";
+import { Page, expect } from '@playwright/test';
+import { AdminAuthLocators } from '../../locators/admin-dashboard/adminAuthLocators';
+import { AdminHomePageLocators } from '../../locators/admin-dashboard/adminHomePageLocators';
 
 export default class AdminAuthPage {
   constructor(public page: Page) {}
@@ -44,33 +44,25 @@ export default class AdminAuthPage {
    * @description Checks if success login toast is visible
    */
   async visibleToastSuccessAdminLogin() {
-    await expect(
-      this.page.locator(AdminAuthLocators.success_admin_login_toast)
-    ).toBeVisible();
+    await expect(this.page.locator(AdminAuthLocators.success_admin_login_toast)).toBeVisible();
   }
   /**
    * @description Checks if success login by role super admin
    */
   async verifyLoginSuperAdmin() {
-    await expect(
-      this.page.locator(AdminHomePageLocators.signin_super_admin_chip)
-    ).toBeVisible();
+    await expect(this.page.locator(AdminHomePageLocators.signin_super_admin_chip)).toBeVisible();
   }
   /**
    * @description Checks if success login by role normal admin
    */
   async verifyLoginNormalAdmin() {
-    await expect(
-      this.page.locator(AdminHomePageLocators.signin_normal_admin_chip)
-    ).toBeVisible();
+    await expect(this.page.locator(AdminHomePageLocators.signin_normal_admin_chip)).toBeVisible();
   }
   /**
    * @description Checks if success login by role company admin
    */
   async verifyLoginCompanyAdmin() {
-    await expect(
-      this.page.locator(AdminHomePageLocators.signin_company_admin_chip)
-    ).toBeVisible();
+    await expect(this.page.locator(AdminHomePageLocators.signin_company_admin_chip)).toBeVisible();
   }
 
   /**
@@ -85,5 +77,6 @@ export default class AdminAuthPage {
    */
   async clickLogoutButton() {
     await this.page.locator(AdminHomePageLocators.logout_button).click();
-    await expect(this.page.locator(AdminAuthLocators.login_button)).toBeVisible();}
+    await expect(this.page.locator(AdminAuthLocators.login_button)).toBeVisible();
+  }
 }
