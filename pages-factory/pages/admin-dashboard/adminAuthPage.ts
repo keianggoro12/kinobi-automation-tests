@@ -1,5 +1,6 @@
 import { Page, expect } from "@playwright/test";
 import { AdminAuthLocators } from "../../locators/admin-dashboard/adminAuthLocators";
+import { AdminHomePageLocators } from "../../locators/admin-dashboard/adminHomePageLocators";
 
 export default class AdminAuthPage {
   constructor(public page: Page) {}
@@ -52,7 +53,7 @@ export default class AdminAuthPage {
    */
   async verifyLoginSuperAdmin() {
     await expect(
-      this.page.locator(AdminAuthLocators.signin_super_admin_chip)
+      this.page.locator(AdminHomePageLocators.signin_super_admin_chip)
     ).toBeVisible();
   }
   /**
@@ -60,7 +61,7 @@ export default class AdminAuthPage {
    */
   async verifyLoginNormalAdmin() {
     await expect(
-      this.page.locator(AdminAuthLocators.signin_normal_admin_chip)
+      this.page.locator(AdminHomePageLocators.signin_normal_admin_chip)
     ).toBeVisible();
   }
   /**
@@ -68,7 +69,7 @@ export default class AdminAuthPage {
    */
   async verifyLoginCompanyAdmin() {
     await expect(
-      this.page.locator(AdminAuthLocators.signin_company_admin_chip)
+      this.page.locator(AdminHomePageLocators.signin_company_admin_chip)
     ).toBeVisible();
   }
 
@@ -76,16 +77,13 @@ export default class AdminAuthPage {
    * @description clicks three dots button
    */
   async clickThreeDotsButton() {
-    await this.page.locator(AdminAuthLocators.three_dots_button).click();
+    await this.page.locator(AdminHomePageLocators.three_dots_button).click();
   }
 
   /**
    * @description clicks logout button
    */
   async clickLogoutButton() {
-    await this.page.locator(AdminAuthLocators.logout_button).click();
-    await expect(
-      this.page.locator(AdminAuthLocators.login_button)
-    ).toBeVisible();
-  }
+    await this.page.locator(AdminHomePageLocators.logout_button).click();
+    await expect(this.page.locator(AdminAuthLocators.login_button)).toBeVisible();}
 }
