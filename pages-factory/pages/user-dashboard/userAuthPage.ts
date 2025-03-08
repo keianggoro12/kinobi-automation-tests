@@ -60,4 +60,8 @@ export default class UserAuthPage {
         const disabledButton = this.page.locator(`${UserAuthLocators.signInButton}[@disabled]`);
         await expect(disabledButton).toBeDisabled();
       }
+     /**
+     * @description Checks if sign in w
+     */
+    
 }
