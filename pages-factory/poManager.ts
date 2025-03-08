@@ -1,6 +1,7 @@
 import { Page } from "@playwright/test";
 import UserAuthPage from "./pages/user-dashboard/userAuthPage";
 import UserHomePage from "./pages/user-dashboard/userHomePage";
+import AdminAuthPage from "./pages/admin-dashboard/adminAuthPage";
 
 export default class POManager {
     constructor(public page: Page) {}
@@ -16,6 +17,12 @@ export default class POManager {
     */
     getUserHomePage() {
         return new UserHomePage(this.page);
+    }
+    /**
+     * @description Creating object reference for admin authentication page class
+     */
+    getAdminAuthPage() {
+        return new AdminAuthPage(this.page);
     }
 
 
