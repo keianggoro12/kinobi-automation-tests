@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 const dataResume = require('../../../../data-test/dataResume.json');
 const personalInfo = dataResume['Personal Information'];
 const workInfo = dataResume['Work Experiences'];
+const educationInfo = dataResume['Education'];
 
 dotenv.config();
 
@@ -86,6 +87,36 @@ test.describe('TS-1: Resume', () => {
     await userResumePage.visible_previewCompanyDescription(workInfo.CompanyDescription);
     await userResumePage.visible_previewRoleDescription(workInfo.roleDescription);
     console.log('Work experience preview verified successfully.');
+
+    await userResumePage.clickSaveAndContinueButton();
+  });
+
+  // Test Case 5: Isi Work Experience Section
+  test('TC-5: Fill education section', async () => {
+    console.log('Filling in education details...');
+
+    await userResumePage.click_buttonAddEducation();
+    await userResumePage.fill_inputSchoolName(educationInfo.SchoolName);
+    await userResumePage.fill_inputSchoolLocation(educationInfo.SchoolLocation);
+    await userResumePage.fill_inputSchoolStartDate(educationInfo.SchoolStartMonth, educationInfo.SchoolStartYear);
+    await userResumePage.fill_inputSchoolEndDate(educationInfo.SchoolEndMonth, educationInfo.SchoolEndYear);
+    await userResumePage.fill_inputEducationLevel(educationInfo.EducationLevel);
+    await userResumePage.fill_inputMajor(educationInfo.Major);
+    await userResumePage.fill_inputGPA(educationInfo.GPA, educationInfo.MaxGPA);
+    await userResumePage.fill_inputSchoolActivity(educationInfo.SchoolActivity);
+    console.log('Education details filled successfully.');
+
+    console.log('Verifying education preview...');
+    await userResumePage.visible_previewEducationEntry(educationInfo.SchoolName, educationInfo.SchoolLocation);
+    await userResumePage.visible_previewSchoolPeriod(
+      educationInfo.SchoolStartMonth,
+      educationInfo.SchoolStartYear,
+      educationInfo.SchoolEndMonth,
+      educationInfo.SchoolEndYear
+    );
+    await userResumePage.visible_previewSchoolDetails(educationInfo.EducationLevel, educationInfo.Major, educationInfo.GPA, educationInfo.MaxGPA);
+    await userResumePage.visible_previewSchoolActivity(educationInfo.SchoolActivity);
+    console.log('Education preview verified successfully.');
 
     await userResumePage.clickSaveAndContinueButton();
   });

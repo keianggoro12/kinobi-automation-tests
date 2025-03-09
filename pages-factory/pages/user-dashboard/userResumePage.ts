@@ -3,6 +3,7 @@ import {
   UserResumeLocators,
   UserResumePersonalDetailsLocators,
   UserResumeWorkExperiencesLocators,
+  UserResumeEducationsLocators,
 } from '../../locators/user-dashboard/userResumeLocators';
 
 export default class UserResumePage {
@@ -196,5 +197,80 @@ export default class UserResumePage {
 
   async visible_previewRoleDescription(roleDescription) {
     await expect(this.page.locator(UserResumeWorkExperiencesLocators.txt_previewRoleDescription(roleDescription))).toBeVisible();
+  }
+
+  /**
+   * @description Click add education button
+   */
+  async click_buttonAddEducation() {
+    await this.page.locator(UserResumeEducationsLocators.btn_addEducation).click();
+  }
+
+  /**
+   * @description Fill in education form
+   */
+  async fill_inputSchoolName(schoolName) {
+    await this.page.locator(UserResumeEducationsLocators.input_schoolName).fill(schoolName);
+    await this.page.locator(UserResumeEducationsLocators.input_schoolName).press('Enter');
+  }
+
+  async fill_inputSchoolLocation(schoolLocation) {
+    await this.page.locator(UserResumeEducationsLocators.input_schoolLocation).fill(schoolLocation);
+  }
+
+  async fill_inputSchoolStartDate(schoolStartMonth, schoolStartYear) {
+    await this.page.locator(UserResumeEducationsLocators.option_schoolStartMonth).click();
+    await this.page.locator(UserResumeEducationsLocators.select_schoolStartMonth(schoolStartMonth)).click();
+
+    await this.page.locator(UserResumeEducationsLocators.option_schoolStartYear).click();
+    await this.page.locator(UserResumeEducationsLocators.select_schoolStartYear(schoolStartYear)).click();
+  }
+
+  async fill_inputSchoolEndDate(schoolEndMonth, schoolEndYear) {
+    await this.page.locator(UserResumeEducationsLocators.option_schoolEndMonth).click();
+    await this.page.locator(UserResumeEducationsLocators.select_schoolEndMonth(schoolEndMonth)).click();
+
+    await this.page.locator(UserResumeEducationsLocators.option_schoolEndYear).click();
+    await this.page.locator(UserResumeEducationsLocators.select_schoolEndYear(schoolEndYear)).click();
+  }
+
+  async fill_inputEducationLevel(educationLevel) {
+    await this.page.locator(UserResumeEducationsLocators.option_educationLevel).click();
+    await this.page.locator(UserResumeEducationsLocators.select_educationLevel(educationLevel)).click();
+  }
+
+  async fill_inputMajor(major) {
+    await this.page.locator(UserResumeEducationsLocators.input_Major).fill(major);
+  }
+
+  async fill_inputGPA(GPA, maxGPA) {
+    await this.page.locator(UserResumeEducationsLocators.input_GPA).fill(GPA);
+    await this.page.locator(UserResumeEducationsLocators.input_maxGPA).fill(maxGPA);
+  }
+
+  async fill_inputSchoolActivity(schoolActivity) {
+    await this.page.locator(UserResumeEducationsLocators.input_schoolActivity).fill(schoolActivity);
+  }
+
+  /**
+   * @description Check visibility of preview data
+   */
+
+  async visible_previewEducationEntry(schoolName, schoolLocation) {
+    await expect(this.page.locator(UserResumeEducationsLocators.txt_previewEducationEntry(schoolName, schoolLocation))).toBeVisible();
+  }
+
+  async visible_previewSchoolPeriod(schoolStartMonth, schoolStartYear, schoolEndMonth, schoolEndYear) {
+    await expect(
+      this.page.locator(UserResumeEducationsLocators.txt_previewSchoolPeriod(schoolStartMonth, schoolStartYear, schoolEndMonth, schoolEndYear))
+    ).toBeVisible();
+  }
+
+  async visible_previewSchoolDetails(educationLevel, major, GPA, maxGPA) {
+    await expect(this.page.locator(UserResumeEducationsLocators.txt_previewSchoolDetails(educationLevel, major, GPA, maxGPA))).toBeVisible();
+  }
+
+  async visible_previewSchoolActivity(schoolActivity) {
+    await expect(this.page.locator(UserResumeEducationsLocators.txt_previewSchoolActivity(schoolActivity))).toBeVisible();
   }
 }

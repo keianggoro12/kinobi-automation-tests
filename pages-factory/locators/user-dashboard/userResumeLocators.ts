@@ -62,3 +62,36 @@ export class UserResumeWorkExperiencesLocators {
   static txt_previewCompanyDescription = (companyDescription) => `text='${companyDescription}'`;
   static txt_previewRoleDescription = (roleDescription) => `#pdf >> text=${roleDescription}`;
 }
+
+export class UserResumeEducationsLocators {
+  static btn_addEducation = "//div[@data-v-3e49a3d4]//button[contains(@class, 'v-btn') and contains(., 'Add education')]";
+  static input_schoolName = "//input[@id='school-name']";
+  static input_schoolLocation = "//input[@id='school-location']";
+
+  static option_schoolStartMonth =
+    "//div[normalize-space()='Education Level']/ancestor::div[@class='container']/descendant::input[@id='start-date-month']";
+  static option_schoolStartYear =
+    "//div[normalize-space()='Education Level']/ancestor::div[@class='container']/descendant::input[@id='start-date-year']";
+  static option_schoolEndMonth = "//input[@id='graduation-date-month']";
+  static option_schoolEndYear = "//input[@id='graduation-date-year']";
+  static option_educationLevel = "//input[@id='education-level']";
+
+  static select_schoolStartMonth = (schoolStartMonth) => `role=option[name='${schoolStartMonth}']`;
+  static select_schoolStartYear = (schoolStartYear) => `role=option[name='${schoolStartYear}']`;
+  static select_schoolEndMonth = (schoolEndMonth) => `role=option[name='${schoolEndMonth}']`;
+  static select_schoolEndYear = (schoolEndYear) => `role=option[name='${schoolEndYear}']`;
+  static select_educationLevel = (educationLevel) => `text=${educationLevel}`;
+
+  static input_Major = "input[placeholder*='Information System']";
+  static input_GPA = "//input[@id='gpa-recommended']";
+  static input_maxGPA = "//input[@id='max-gpa']";
+  static input_schoolActivity = '#elaboration-list-education0';
+
+  static txt_previewEducationEntry = (schoolName, schoolLocation) =>
+    `#pdf .body-title-country:has(.body-title:has-text("${schoolName}")) .body-country:has-text("- ${schoolLocation}")`;
+  static txt_previewSchoolPeriod = (schoolStartMonth, schoolStartYear, schoolEndMonth, schoolEndYear) =>
+    `#pdf >> text="${schoolStartMonth} ${schoolStartYear} - ${schoolEndMonth} ${schoolEndYear}"`;
+  static txt_previewSchoolDetails = (educationLevel, major, GPA, maxGPA) =>
+    `#pdf .body-subtitle:has-text("${educationLevel} of ${major}") >> span:has-text("${GPA}/${maxGPA}")`;
+  static txt_previewSchoolActivity = (schoolActivity) => `#pdf >> text="${schoolActivity}"`;
+}
