@@ -95,3 +95,50 @@ export class UserResumeEducationsLocators {
     `#pdf .body-subtitle:has-text("${educationLevel} of ${major}") >> span:has-text("${GPA}/${maxGPA}")`;
   static txt_previewSchoolActivity = (schoolActivity) => `#pdf >> text="${schoolActivity}"`;
 }
+
+export class UserResumeOrganizationsLocators {
+  static btn_addOrganization = "//div[@data-v-49031e3f]//button[contains(@class, 'v-btn') and contains(., 'Add experience')]";
+  static input_organizationName = '#organization-name';
+  static input_organizationRole = '#your-role-title';
+  static input_organizationDescription = '#organisation-description';
+  static input_organizationLocation = '#organization-location';
+
+  static option_organizationStartMonth =
+    "//div[normalize-space()='Organisational Experience']/ancestor::div[@class='container']/descendant::input[@id='start-date-month']";
+  static select_organizationStartMonth = (organizationStartMonth) => `role=option[name='${organizationStartMonth}']`;
+  static option_organizationStartYear =
+    "//div[normalize-space()='Organisational Experience']/ancestor::div[@class='container']/descendant::input[@id='start-date-year']";
+  static select_organizationStartYear = (organizationStartYear) => `role=option[name='${organizationStartYear}']`;
+
+  static btn_dateCurrentStillActive = "//label[contains(text(), 'I am currently active here')]";
+
+  static option_organizationEndMonth =
+    "//div[normalize-space()='Organisational Experience']/ancestor::div[@class='container']/descendant::input[@id='end-date-month']";
+  static select_organizationEndMonth = (organizationEndMonth) => `role=option[name='${organizationEndMonth}']`;
+  static option_organizationEndYear =
+    "//div[normalize-space()='Organisational Experience']/ancestor::div[@class='container']/descendant::input[@id='end-date-year']";
+  static select_organizationEndYear = (organizationEndYear) => `role=option[name='${organizationEndYear}']`;
+
+  static input_organizationRoleDescription = '#elaboration-list-leadership_experience0';
+
+  static txt_previewOrganizationName = (organizationName) => `#pdf >> text='${organizationName}'`;
+  static txt_previewOrganizationLocation = (organizationLocation) => `#pdf >> text='- ${organizationLocation}'`;
+  static txt_previewOrganizationPeriod = (organizationStartMonth, organizationStartYear, organizationEndMonth, organizationEndYear) =>
+    `#pdf >> text='${organizationStartMonth} ${organizationStartYear} - ${organizationEndMonth} ${organizationEndYear}'`;
+  static txt_previewOrganizationRole = (organizationRole) => `#pdf >> text='${organizationRole}'`;
+  static txt_previewOrganizationDescription = (organizationDescription) => `#pdf >> text='${organizationDescription}'`;
+  static txt_previewOrganizationRoleDescription = (organizationRoleDescription) => `#pdf >> text='${organizationRoleDescription}'`;
+}
+
+export class UserResumeOthersLocators {
+  static btn_addOthers = "//div[@data-v-126f118b]//button[contains(@class, 'v-btn') and contains(., 'Add experience')]";
+  static option_othersType = "//input[@id='category']";
+  static select_othersType = (othersType) => `role=option[name='${othersType}']`;
+  static option_othersYear = "//input[@id='experience-year']";
+  static select_othersYear = (othersYear) => `role=option[name='${othersYear}']`;
+  static input_othersElaboration = "//div[normalize-space()='Elaboration']/following-sibling::div/descendant::input";
+
+  static txt_previewOthersType = (othersType) => `#pdf >> text='${othersType}'`;
+  static txt_previewOthersYear = (othersYear) => `#pdf >> text='(${othersYear})'`;
+  static txt_previewOthersElaboration = (othersElaboration) => `#pdf .body-elaboration-other-skills .body-individual-elaboration span:text("${othersElaboration}")`;;
+}

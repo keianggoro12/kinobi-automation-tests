@@ -4,6 +4,8 @@ import {
   UserResumePersonalDetailsLocators,
   UserResumeWorkExperiencesLocators,
   UserResumeEducationsLocators,
+  UserResumeOrganizationsLocators,
+  UserResumeOthersLocators,
 } from '../../locators/user-dashboard/userResumeLocators';
 
 export default class UserResumePage {
@@ -272,5 +274,176 @@ export default class UserResumePage {
 
   async visible_previewSchoolActivity(schoolActivity) {
     await expect(this.page.locator(UserResumeEducationsLocators.txt_previewSchoolActivity(schoolActivity))).toBeVisible();
+  }
+
+  /**
+   * @description Clicks the "Add Organization" button.
+   */
+  async click_buttonAddOrganization() {
+    await this.page.locator(UserResumeOrganizationsLocators.btn_addOrganization).click();
+  }
+
+  /**
+   * @description Fills in the organization name.
+   */
+  async fill_inputOrganizationName(organizationName) {
+    await this.page.locator(UserResumeOrganizationsLocators.input_organizationName).fill(organizationName);
+  }
+
+  /**
+   * @description Fills in the organization role/title.
+   */
+  async fill_inputOrganizationRole(organizationRole) {
+    await this.page.locator(UserResumeOrganizationsLocators.input_organizationRole).fill(organizationRole);
+  }
+
+  /**
+   * @description Fills in the organization description.
+   */
+  async fill_inputOrganizationDescription(organizationDescription) {
+    await this.page.locator(UserResumeOrganizationsLocators.input_organizationDescription).fill(organizationDescription);
+  }
+
+  /**
+   * @description Fills in the organization location.
+   */
+  async fill_inputOrganizationLocation(organizationLocation) {
+    await this.page.locator(UserResumeOrganizationsLocators.input_organizationLocation).fill(organizationLocation);
+  }
+
+  /**
+   * @description Selects the organization start date (month & year).
+   */
+  async fill_inputOrganizationStartDate(organizationStartMonth, organizationStartYear) {
+    await this.page.locator(UserResumeOrganizationsLocators.option_organizationStartMonth).click();
+    await this.page.locator(UserResumeOrganizationsLocators.select_organizationStartMonth(organizationStartMonth)).click();
+
+    await this.page.locator(UserResumeOrganizationsLocators.option_organizationStartYear).click();
+    await this.page.locator(UserResumeOrganizationsLocators.select_organizationStartYear(organizationStartYear)).click();
+  }
+
+  /**
+   * @description Selects the organization end date (month & year).
+   */
+  async fill_inputOrganizationEndDate(organizationEndMonth, organizationEndYear) {
+    await this.page.locator(UserResumeOrganizationsLocators.btn_dateCurrentStillActive).click();
+
+    await this.page.locator(UserResumeOrganizationsLocators.option_organizationEndMonth).click();
+    await this.page.locator(UserResumeOrganizationsLocators.select_organizationEndMonth(organizationEndMonth)).click();
+
+    await this.page.locator(UserResumeOrganizationsLocators.option_organizationEndYear).click();
+    await this.page.locator(UserResumeOrganizationsLocators.select_organizationEndYear(organizationEndYear)).click();
+  }
+
+  /**
+   * @description Fills in the organization role description.
+   */
+  async fill_inputOrganizationRoleDescription(organizationRoleDescription) {
+    await this.page.locator(UserResumeOrganizationsLocators.input_organizationRoleDescription).fill(organizationRoleDescription);
+  }
+
+  /**
+   * @description Verifies if the organization name is visible in the preview.
+   */
+  async visible_previewOrganizationName(organizationName) {
+    await expect(this.page.locator(UserResumeOrganizationsLocators.txt_previewOrganizationName(organizationName))).toBeVisible();
+  }
+
+  /**
+   * @description Verifies if the organization location is visible in the preview.
+   */
+  async visible_previewOrganizationLocation(organizationLocation) {
+    await expect(this.page.locator(UserResumeOrganizationsLocators.txt_previewOrganizationLocation(organizationLocation))).toBeVisible();
+  }
+
+  /**
+   * @description Verifies if the organization period is visible in the preview.
+   */
+  async visible_previewOrganizationPeriod(organizationStartMonth, organizationStartYear, organizationEndMonth, organizationEndYear) {
+    await expect(
+      this.page.locator(
+        UserResumeOrganizationsLocators.txt_previewOrganizationPeriod(
+          organizationStartMonth,
+          organizationStartYear,
+          organizationEndMonth,
+          organizationEndYear
+        )
+      )
+    ).toBeVisible();
+  }
+
+  /**
+   * @description Verifies if the organization role is visible in the preview.
+   */
+  async visible_previewOrganizationRole(organizationRole) {
+    await expect(this.page.locator(UserResumeOrganizationsLocators.txt_previewOrganizationRole(organizationRole))).toBeVisible();
+  }
+
+  /**
+   * @description Verifies if the organization description is visible in the preview.
+   */
+  async visible_previewOrganizationDescription(organizationDescription) {
+    await expect(this.page.locator(UserResumeOrganizationsLocators.txt_previewOrganizationDescription(organizationDescription))).toBeVisible();
+  }
+
+  /**
+   * @description Verifies if the organization role description is visible in the preview.
+   */
+  async visible_previewOrganizationRoleDescription(organizationRoleDescription) {
+    await expect(
+      this.page.locator(UserResumeOrganizationsLocators.txt_previewOrganizationRoleDescription(organizationRoleDescription))
+    ).toBeVisible();
+  }
+
+  /**
+   * @description Clicks the "Add Experience" button for Others section.
+   */
+  async click_buttonAddOthers() {
+    await this.page.locator(UserResumeOthersLocators.btn_addOthers).waitFor({ state: 'visible', timeout: 5000 });
+    await this.page.locator(UserResumeOthersLocators.btn_addOthers).click();
+  }
+
+  /**
+   * @description Selects the "Others Type" from the dropdown.
+   */
+  async fill_inputOthersType(othersType) {
+    await this.page.locator(UserResumeOthersLocators.option_othersType).click();
+    await this.page.locator(UserResumeOthersLocators.select_othersType(othersType)).click();
+  }
+
+  /**
+   * @description Selects the "Others Year" from the dropdown.
+   */
+  async fill_inputOthersYear(othersYear) {
+    await this.page.locator(UserResumeOthersLocators.option_othersYear).click();
+    await this.page.locator(UserResumeOthersLocators.select_othersYear(othersYear)).click();
+  }
+
+  /**
+   * @description Fills in the elaboration field for Others section.
+   */
+  async fill_inputOthersElaboration(othersElaboration) {
+    await this.page.locator(UserResumeOthersLocators.input_othersElaboration).fill(othersElaboration);
+  }
+
+  /**
+   * @description Verifies if the selected "Others Type" is visible in the preview.
+   */
+  async visible_previewOthersType(othersType) {
+    await expect(this.page.locator(UserResumeOthersLocators.txt_previewOthersType(othersType))).toBeVisible();
+  }
+
+  /**
+   * @description Verifies if the selected "Others Year" is visible in the preview.
+   */
+  async visible_previewOthersYear(othersYear) {
+    await expect(this.page.locator(UserResumeOthersLocators.txt_previewOthersYear(othersYear))).toBeVisible();
+  }
+
+  /**
+   * @description Verifies if the entered "Others Elaboration" is visible in the preview.
+   */
+  async visible_previewOthersElaboration(othersElaboration) {
+    await expect(this.page.locator(UserResumeOthersLocators.txt_previewOthersElaboration(othersElaboration))).toBeVisible();
   }
 }
