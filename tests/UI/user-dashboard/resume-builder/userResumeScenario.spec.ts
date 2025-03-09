@@ -91,7 +91,6 @@ test.describe('TS-1: Resume', () => {
     await userResumePage.clickSaveAndContinueButton();
   });
 
-  // Test Case 5: Isi Work Experience Section
   test('TC-5: Fill education section', async () => {
     console.log('Filling in education details...');
 
